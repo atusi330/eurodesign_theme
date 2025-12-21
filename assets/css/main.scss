@@ -39,6 +39,18 @@ body {
   animation: fadeInUp 0.8s ease forwards;
 }
 
+.fade-in.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.fade-in.delay-400 {
+  animation-delay: 0.4s;
+}
+
+.fade-in.delay-600 {
+  animation-delay: 0.6s;
+}
+
 @keyframes fadeInUp {
   to {
     opacity: 1;
@@ -62,6 +74,33 @@ body {
   }
 }
 
+/* Contact Form 7 スタイル調整 */
+.wpcf7-form-wrapper {
+  max-width: 100%;
+  
+  .wpcf7-form {
+    max-width: 100%;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+/* LINEボタンをフォームと同じ幅に */
+#contact > div:first-of-type {
+  max-width: 100%;
+  
+  a {
+    max-width: 100%;
+  }
+}
+
 /* prose カスタマイズ */
 @layer components {
   .prose {
@@ -80,7 +119,7 @@ body {
     }
 
     ul {
-      @apply list-disc pl-6 mb-6;
+      @apply pl-6 mb-6;
     }
 
     ol {
@@ -118,6 +157,19 @@ body {
 
     hr {
       @apply border-t-2 border-gray-400 mx-5 my-14;
+    }
+  }
+
+  /* POST記事のみリストスタイルを適用 */
+  body.single-post .prose,
+  body.post-type-post .prose {
+    ul {
+      @apply list-disc pl-6 mb-6;
+      
+      li {
+        @apply mb-2;
+        list-style-type: disc;
+      }
     }
   }
 }
