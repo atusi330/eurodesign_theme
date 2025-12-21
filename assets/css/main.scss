@@ -173,3 +173,10 @@ body {
     }
   }
 }
+
+/* ページネーション カレントページのスタイル */
+.pagination-current {
+  @apply font-bold;
+  font-weight: 700;
+  font-size: calc(1em + 4px);
+}

@@ -16,6 +16,16 @@ document.addEventListener('DOMContentLoaded', () => {
       .then(html => {
         document.querySelector('#posts-wrapper').innerHTML = html;
         currentCategory = category;
+        // カレントページのスタイルを更新
+        const paginationLinks = document.querySelectorAll('.pagination-link');
+        paginationLinks.forEach(link => {
+          const pageNum = parseInt(link.dataset.page);
+          if (pageNum === paged) {
+            link.classList.add('pagination-current', 'font-bold');
+          } else {
+            link.classList.remove('pagination-current', 'font-bold');
+          }
+        });
       });
   }
 

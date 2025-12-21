@@ -43,10 +43,11 @@ foreach ($categories as $cat) {
 
       <div id="posts-wrapper">
         <?php
+  $paged = get_query_var('paged') ? get_query_var('paged') : 1;
   $args = [
     'post_type' => 'post',
     'posts_per_page' => 6,
-    'paged' => 1
+    'paged' => $paged
   ];
 $query = new WP_Query($args);
 if ($query->have_posts()) :
@@ -57,7 +58,8 @@ if ($query->have_posts()) :
     echo '</div>';
     echo '<div class="pagination mt-8 text-center">';
     for ($i = 1; $i <= $query->max_num_pages; $i++) {
-        echo '<a href="#" class="pagination-link inline-block mx-2 text-blue-700 font-semibold" data-page="' . $i . '">' . $i . '</a>';
+        $current_class = ($i == $paged) ? 'pagination-current font-bold' : '';
+        echo '<a href="#" class="pagination-link inline-block mx-2 text-blue-700 font-semibold ' . $current_class . '" data-page="' . $i . '">' . $i . '</a>';
     }
     echo '</div>';
 else :
